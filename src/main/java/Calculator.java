@@ -1,5 +1,10 @@
+import static java.lang.Integer.parseInt;
+
 public class Calculator {
     public int add(String text) {
-        return 0;
+        if (text.isEmpty()) {
+            return 0;
+        }
+        return parseInt(text);
     }
 }

@@ -9,7 +9,7 @@ public class Calculator {
     }
 
     private static int addTokens(String text) {
-        String[] tokens = text.split(",");
+        String[] tokens = text.split("[,\n]");
         return Arrays.stream(tokens).mapToInt(Integer::parseInt).sum();
     }
 }

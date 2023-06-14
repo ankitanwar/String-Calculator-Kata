@@ -44,4 +44,9 @@ public class CalculatorTests {
     void additionOf_6_4_7_and2_is19() {
         assertEquals(19, calculator.add("6,4,7,2"));
     }
+
+    @Test
+    void additionOf_2_4_and_7_withNewLineDelimiterIs13() {
+        assertEquals(13, calculator.add("2,4\n7"));
+    }
 }

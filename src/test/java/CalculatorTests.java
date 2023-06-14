@@ -87,4 +87,21 @@ public class CalculatorTests {
     void additionWithNegativeNumber_4_WillThrowNegativeNumberIsNotAllowedException() {
         assertThrows(NegativeNumberNotAllowed.class, () -> calculator.add("//.\n2.-4"));
     }
+
+    @Test
+    @DisplayName("addition with negative number 8 returns the message negatives not allowed [-8]")
+    void additionWithNegativeNumber_8_ReturnsWithMessage() {
+        String expectedErrorMessage = "negatives not allowed : [-8]";
+        NegativeNumberNotAllowed negativeNumberNotAllowed = assertThrows(NegativeNumberNotAllowed.class, () -> calculator.add("4,-8\n3"));
+        assertEquals(expectedErrorMessage, negativeNumberNotAllowed.getMessage());
+    }
+
+
+    @Test
+    @DisplayName("addition with negative number 5 and 3 returns the message negatives not allowed [-5,-3]")
+    void additionWithNegativeNumber_5_and_3_ReturnsWithMessage() {
+        String expectedErrorMessage = "negatives not allowed : [-5, -3]";
+        NegativeNumberNotAllowed negativeNumberNotAllowed = assertThrows(NegativeNumberNotAllowed.class, () -> calculator.add("4,2,-5,1,-3"));
+        assertEquals(expectedErrorMessage, negativeNumberNotAllowed.getMessage());
+    }
 }

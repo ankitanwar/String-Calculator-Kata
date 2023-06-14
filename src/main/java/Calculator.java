@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.IntPredicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,9 +19,9 @@ public class Calculator {
     }
 
     private void throwErrorIfNegativeNumberIsPresent(String[] tokens) {
-        long negativeNumberCount = Arrays.stream(tokens).mapToInt(Integer::parseInt).filter(isNegativeNumber()).count();
-        if (negativeNumberCount > 0) {
-            throw new NegativeNumberNotAllowed();
+        List<Integer> negativeNumbers = Arrays.stream(tokens).mapToInt(Integer::parseInt).filter(isNegativeNumber()).boxed().toList();
+        if (!negativeNumbers.isEmpty()) {
+            throw new NegativeNumberNotAllowed("negatives not allowed : " + negativeNumbers);
         }
     }
 

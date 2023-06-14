@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTests {
 
@@ -72,5 +73,18 @@ public class CalculatorTests {
     @DisplayName("addition of 4,6 is 5")
     void additionOf_4_and_6_withRegexCharAsCustomDelimiterIs10() {
         assertEquals(10, calculator.add("//.\n4.6"));
+    }
+
+    @Test
+    @DisplayName("addition with negative number is not allowed")
+    void additionWithNegativeNumber_2_WillThrowNegativeNumberIsNotAllowedException() {
+        assertThrows(NegativeNumberNotAllowed.class, () -> calculator.add("1,-2,3"));
+    }
+
+
+    @Test
+    @DisplayName("addition with negative number is not allowed")
+    void additionWithNegativeNumber_4_WillThrowNegativeNumberIsNotAllowedException() {
+        assertThrows(NegativeNumberNotAllowed.class, () -> calculator.add("//.\n2.-4"));
     }
 }

@@ -1,14 +1,15 @@
-import static java.lang.Integer.parseInt;
+import java.util.Arrays;
 
 public class Calculator {
     public int add(String text) {
         if (text.isEmpty()) {
             return 0;
         }
-        if (text.contains(",")) {
-            String[] tokens = text.split(",");
-            return parseInt(tokens[0]) + parseInt(tokens[1]);
-        }
-        return parseInt(text);
+        return addTokens(text);
+    }
+
+    private static int addTokens(String text) {
+        String[] tokens = text.split(",");
+        return Arrays.stream(tokens).mapToInt(Integer::parseInt).sum();
     }
 }

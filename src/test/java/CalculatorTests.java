@@ -49,4 +49,28 @@ public class CalculatorTests {
     void additionOf_2_4_and_7_withNewLineDelimiterIs13() {
         assertEquals(13, calculator.add("2,4\n7"));
     }
+
+    @Test
+    @DisplayName("addition of 2,3 is 5")
+    void additionOf_2_and_3_withCustomDelimiterIs5() {
+        assertEquals(5, calculator.add("//;\n2;3"));
+    }
+
+    @Test
+    @DisplayName("addition of 4,5 is 9")
+    void additionOf_4_and_5_withCustomDelimiterIs9() {
+        assertEquals(9, calculator.add("//;\n4;5"));
+    }
+
+    @Test
+    @DisplayName("addition of 2,3 is 5")
+    void additionOf_2_and_3_withRegexCharAsCustomDelimiterIs5() {
+        assertEquals(5, calculator.add("//.\n2.3"));
+    }
+
+    @Test
+    @DisplayName("addition of 4,6 is 5")
+    void additionOf_4_and_6_withRegexCharAsCustomDelimiterIs10() {
+        assertEquals(10, calculator.add("//.\n4.6"));
+    }
 }

@@ -20,4 +20,14 @@ public class CalculatorTests {
     void additionOfSingleText7Is7() {
         assertEquals(7, calculator.add("7"));
     }
+
+    @Test
+    void additionOf3And2Is5() {
+        assertEquals(5, calculator.add("3,2"));
+    }
+
+    @Test
+    void additionOf5And8Is13() {
+        assertEquals(13, calculator.add("5,8"));
+    }
 }

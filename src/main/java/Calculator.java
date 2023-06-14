@@ -5,6 +5,10 @@ public class Calculator {
         if (text.isEmpty()) {
             return 0;
         }
+        if (text.contains(",")) {
+            String[] tokens = text.split(",");
+            return parseInt(tokens[0]) + parseInt(tokens[1]);
+        }
         return parseInt(text);
     }
 }
